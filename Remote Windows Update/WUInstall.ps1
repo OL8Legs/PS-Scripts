@@ -1,6 +1,6 @@
 ﻿$ModuleName = "PSWindowsUpdate"
 
-# Install the module if it is not already installed, then load it.
+# Installs the module and checks/installs Nuget on the system
 Try {
 
     $null = Get-InstalledModule $ModuleName -ErrorAction Stop
@@ -17,9 +17,10 @@ Try {
 
 }
 
+# Imports the module to run the cmdlet
+
 $null = Import-Module $ModuleName -Force
 
-# The Collection object this cmdlet emits is really weird.
-# We have to assign it to a variable to get it to work properly in a pipeline.
+# If you don't assign the cmdlet to a variable it acts super weird.
 
 $IWU = Install-WindowsUpdate -AcceptAll
